@@ -74,7 +74,7 @@ export function JobHistoryPage() {
     return <p>Loading jobs...</p>
   }
 
-  if (error) {
+  if (error && jobs.length === 0) {
     return <p>{error}</p>
   }
 
