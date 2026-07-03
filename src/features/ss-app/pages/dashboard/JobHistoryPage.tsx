@@ -87,38 +87,43 @@ export function JobHistoryPage() {
             </div>
         )}
 
-        {/* DETAILS PANEL */}
-        {selectedJob ? (
-            <div
-                style={{
-                  marginTop: '20px',
-                  padding: '12px',
-                  border: '1px solid #ddd',
-                  borderRadius: '6px',
-                  background: '#fafafa',
-                }}
-            >
-              <h4>Job Details</h4>
+          <p>
+            <strong>Job ID:</strong> {selectedJob.id}
+          </p>
+          <p>
+            <strong>Status:</strong> {selectedJob.status}
+          </p>
+          <p>
+            <strong>Stage:</strong> {selectedJob.stage ?? '-'}
+          </p>
+          <p>
+            <strong>Created:</strong>{' '}
+            {new Date(selectedJob.createdAt).toLocaleString()}
+          </p>
+          <p>
+            <strong>Updated:</strong>{' '}
+            {new Date(selectedJob.updatedAt).toLocaleString()}
+          </p>
 
-              <p>
-                <strong>Job ID:</strong> {selectedJob.id}
-              </p>
-              <p>
-                <strong>Status:</strong> {selectedJob.status}
-              </p>
-              <p>
-                <strong>Stage:</strong> {selectedJob.stage ?? '-'}
-              </p>
-              <p>
-                <strong>Created:</strong>{' '}
-                {new Date(selectedJob.createdAt).toLocaleString()}
-              </p>
-              <p>
-                <strong>Updated:</strong>{' '}
-                {new Date(selectedJob.updatedAt).toLocaleString()}
-              </p>
-            </div>
-        ) : null}
-      </div>
+          {/* Export XLSX link */}
+          <div style={{ marginTop: '12px' }}>
+            <a
+              href={`/api/screenshots/${selectedJob.id}/export/xlsx`}
+              style={{
+                display: 'inline-block',
+                padding: '8px 12px',
+                background: '#1f2937',
+                color: '#fff',
+                borderRadius: '4px',
+                textDecoration: 'none',
+                fontSize: '14px',
+              }}
+            >
+              Export XLSX
+            </a>
+          </div>
+        </div>
+      ) : null}
+    </div>
   )
 }
