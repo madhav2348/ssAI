@@ -119,6 +119,24 @@ export function JobHistoryPage() {
             <strong>Updated:</strong>{' '}
             {new Date(selectedJob.updatedAt).toLocaleString()}
           </p>
+
+          {/* Export XLSX link */}
+          <div style={{ marginTop: '12px' }}>
+            <a
+              href={`/api/screenshots/${selectedJob.id}/export/xlsx`}
+              style={{
+                display: 'inline-block',
+                padding: '8px 12px',
+                background: '#1f2937',
+                color: '#fff',
+                borderRadius: '4px',
+                textDecoration: 'none',
+                fontSize: '14px',
+              }}
+            >
+              Export XLSX
+            </a>
+          </div>
         </div>
       ) : null}
     </div>
