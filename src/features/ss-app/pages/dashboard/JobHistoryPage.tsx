@@ -15,8 +15,6 @@ export function JobHistoryPage() {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null)
 
   useEffect(() => {
-    let interval: ReturnType<typeof setInterval>
-
     async function load() {
       try {
         const res = await fetch('/api/screenshots')
@@ -28,7 +26,7 @@ export function JobHistoryPage() {
     }
 
     load()
-    interval = setInterval(load, 3000)
+    const interval = setInterval(load, 3000)
 
     return () => clearInterval(interval)
   }, [])
@@ -38,69 +36,56 @@ export function JobHistoryPage() {
   }
 
   return (
-    <div className="job-history-page">
-      <h3>Job History</h3>
+      <div className="job-history-page">
+        <h3>Job History</h3>
 
-      {jobs.length === 0 ? (
-        <p>No jobs found.</p>
-      ) : (
-        <div style={{ display: 'grid', gap: '8px', marginTop: '12px' }}>
-          {/* HEADER */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr 1fr 1fr',
-              fontWeight: 'bold',
-            }}
-          >
-            <span>Job ID</span>
-            <span>Status</span>
-            <span>Stage</span>
-            <span>Updated</span>
-          </div>
+        {jobs.length === 0 ? (
+            <p>No jobs found.</p>
+        ) : (
+            <div style={{ display: 'grid', gap: '8px', marginTop: '12px' }}>
+              {/* HEADER */}
+              <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr 1fr 1fr',
+                    fontWeight: 'bold',
+                  }}
+              >
+                <span>Job ID</span>
+                <span>Status</span>
+                <span>Stage</span>
+                <span>Updated</span>
+              </div>
 
-          {/* ROWS */}
-          {jobs.map((job) => (
-            <div
-              key={job.id}
-              onClick={() => setSelectedJob(job)}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr 1fr 1fr',
-                padding: '8px 0',
-                borderBottom: '1px solid #eee',
-                cursor: 'pointer',
-              }}
-            >
-              <span>{job.id.slice(0, 10)}...</span>
+              {/* ROWS */}
+              {jobs.map((job) => (
+                  <div
+                      key={job.id}
+                      onClick={() => setSelectedJob(job)}
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr 1fr 1fr',
+                        padding: '8px 0',
+                        borderBottom: '1px solid #eee',
+                        cursor: 'pointer',
+                      }}
+                  >
+                    <span>{job.id.slice(0, 10)}...</span>
 
-              <span>
+                    <span>
                 {job.status === 'processed' && 'processed'}
-                {job.status === 'processing' && 'processing'}
-                {job.status === 'queued' && 'queued'}
-                {job.status === 'failed' && 'failed'}
+                      {job.status === 'processing' && 'processing'}
+                      {job.status === 'queued' && 'queued'}
+                      {job.status === 'failed' && 'failed'}
               </span>
 
-              <span>{job.stage ?? '-'}</span>
+                    <span>{job.stage ?? '-'}</span>
 
-              <span>{new Date(job.updatedAt).toLocaleTimeString()}</span>
+                    <span>{new Date(job.updatedAt).toLocaleTimeString()}</span>
+                  </div>
+              ))}
             </div>
-          ))}
-        </div>
-      )}
-
-      {/* DETAILS PANEL */}
-      {selectedJob ? (
-        <div
-          style={{
-            marginTop: '20px',
-            padding: '12px',
-            border: '1px solid #ddd',
-            borderRadius: '6px',
-            background: '#fafafa',
-          }}
-        >
-          <h4>Job Details</h4>
+        )}
 
           <p>
             <strong>Job ID:</strong> {selectedJob.id}
