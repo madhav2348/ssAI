@@ -1,6 +1,8 @@
 .app-shell {
   min-height: 100vh;
+  background: #12101e;
 }
+
 
 .splash-shell {
   display: flex;
@@ -9,13 +11,7 @@
   padding: 32px;
   position: relative;
   min-height: 100vh;
-  background-color: #f8fafc;
-  background-image:
-    radial-gradient(rgba(99, 102, 241, 0.05) 2px, transparent 2px),
-    radial-gradient(circle at center, #ffffff 0%, rgba(99, 102, 241, 0.08) 100%);
-  background-size:
-    24px 24px,
-    100% 100%;
+  background: #3d2e58;
 }
 
 .splash-card:hover {
@@ -47,10 +43,6 @@
   font-size: 0.75rem;
   font-weight: 700;
   color: #6366f1;
-  background: rgba(99, 102, 241, 0.08);
-  padding: 6px 16px;
-  border-radius: 99px;
-  margin: 0 auto;
 }
 
 .splash-card h1,
@@ -73,12 +65,12 @@
 .splash-card {
   position: relative;
   max-width: 600px;
-  width: 100%;
-  min-height: 400px;
-  padding: 56px 48px;
+  width: min(560px, 100%);
+  min-height: 430px;
+  padding: 48px 32px;
   border-radius: 28px;
-  background: var(--surface);
-  border: 1px solid rgba(99, 102, 241, 0.1);
+  background: #1e1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.05),
     0 20px 25px -5px rgba(0, 0, 0, 0.05),
@@ -88,7 +80,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 20px;
   animation: premiumFloatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .splash-card .button-group,
@@ -124,9 +116,15 @@
   min-width: 180px;
   padding: 16px 24px;
   border-radius: 999px;
-  font-weight: 600;
-  color: var(--surface);
-  background: var(--primary);
+  font-weight: 700;
+  color: #ffffff;
+  background: #3b1f8c;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.primary-button:hover {
+  background: #4c2aad;
+  transform: translateY(-2px);
 }
 
 .primary-button:hover {
@@ -147,7 +145,7 @@
   border-radius: 999px;
   color: var(--text);
   background: transparent;
-  border: 1px solid var(--border);
+  border: none;
 }
 
 .secondary-button:hover {
@@ -596,7 +594,20 @@
   font-size: 0.78rem;
   color: var(--primary);
 }
-
+.splash-card h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.2;
+  font-weight: 800;
+  color: #e8e0ff;
+}
+.splash-subtitle {
+  margin: 0;
+  max-width: 42ch;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
 .empty-state {
   max-width: 34ch;
   color: var(--muted);
