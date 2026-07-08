@@ -57,7 +57,23 @@ export class InMemoryQueue<TPayload> {
       if (!id) continue;
       const job = this.jobs.get(id);
       if (!job || job.status === "processed") continue;
-      await handler(job);
+
+      // FIX: Explicitly set status to processing before the handler executes
+      this.updateStatus(id, "processing");
+
+      try {
+        await handler(job);
+        // Mark as completed once processed successfully
+        this.updateStatus(id, "processed");
+      } catch (error) {
+        // Fallback: If it crashes, mark it failed so it doesn't hang forever
+        this.updateStatus(
+          id,
+          "failed",
+          null,
+          error instanceof Error ? error.message : String(error)
+        );
+      }
     }
   }
 
