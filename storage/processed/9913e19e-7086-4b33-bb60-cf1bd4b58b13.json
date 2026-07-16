@@ -1,0 +1,39 @@
+{
+  "screenshot": {
+    "id": "9913e19e-7086-4b33-bb60-cf1bd4b58b13",
+    "sourceType": "manual_upload",
+    "sourceRef": "9913e19e-7086-4b33-bb60-cf1bd4b58b13.png",
+    "filePath": "C:\\Users\\ASUS\\Downloads\\ssAI\\storage\\screenshots\\9913e19e-7086-4b33-bb60-cf1bd4b58b13.png",
+    "createdAt": "2026-06-06T08:46:39.851Z",
+    "metadata": {
+      "originalFileName": "logo.png",
+      "description": "Testing with public logo"
+    }
+  },
+  "ocr": {
+    "text": "OCR placeholder for logo.png",
+    "confidence": 0.25
+  },
+  "vision": {
+    "summary": "Vision placeholder for C:\\Users\\ASUS\\Downloads\\ssAI\\storage\\screenshots\\9913e19e-7086-4b33-bb60-cf1bd4b58b13.png",
+    "objects": [],
+    "confidence": 0.2
+  },
+  "source": {
+    "evidence": [
+      "Testing with public logo",
+      "OCR placeholder for logo.png",
+      "Vision placeholder for C:\\Users\\ASUS\\Downloads\\ssAI\\storage\\screenshots\\9913e19e-7086-4b33-bb60-cf1bd4b58b13.png"
+    ]
+  },
+  "tagging": {
+    "categories": [
+      "unclassified"
+    ],
+    "labels": [
+      "OCR placeholder for logo.png",
+      "Vision placeholder for C:\\Users\\ASUS\\Downloads\\ssAI\\storage\\screenshots\\9913e19e-7086-4b33-bb60-cf1bd4b58b13.png"
+    ]
+  },
+  "processedAt": "2026-06-06T08:46:39.858Z"
+}

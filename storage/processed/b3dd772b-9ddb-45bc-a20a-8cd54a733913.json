@@ -1,0 +1,39 @@
+{
+  "screenshot": {
+    "id": "b3dd772b-9ddb-45bc-a20a-8cd54a733913",
+    "sourceType": "manual_upload",
+    "sourceRef": "b3dd772b-9ddb-45bc-a20a-8cd54a733913.png",
+    "filePath": "C:\\Users\\ASUS\\Downloads\\ssAI\\storage\\screenshots\\b3dd772b-9ddb-45bc-a20a-8cd54a733913.png",
+    "createdAt": "2026-06-06T08:45:24.724Z",
+    "metadata": {
+      "originalFileName": "logo.png",
+      "description": "Testing worker pipeline via Node script"
+    }
+  },
+  "ocr": {
+    "text": "OCR placeholder for logo.png",
+    "confidence": 0.25
+  },
+  "vision": {
+    "summary": "Vision placeholder for C:\\Users\\ASUS\\Downloads\\ssAI\\storage\\screenshots\\b3dd772b-9ddb-45bc-a20a-8cd54a733913.png",
+    "objects": [],
+    "confidence": 0.2
+  },
+  "source": {
+    "evidence": [
+      "Testing worker pipeline via Node script",
+      "OCR placeholder for logo.png",
+      "Vision placeholder for C:\\Users\\ASUS\\Downloads\\ssAI\\storage\\screenshots\\b3dd772b-9ddb-45bc-a20a-8cd54a733913.png"
+    ]
+  },
+  "tagging": {
+    "categories": [
+      "unclassified"
+    ],
+    "labels": [
+      "OCR placeholder for logo.png",
+      "Vision placeholder for C:\\Users\\ASUS\\Downloads\\ssAI\\storage\\screenshots\\b3dd772b-9ddb-45bc-a20a-8cd54a733913.png"
+    ]
+  },
+  "processedAt": "2026-06-06T08:45:24.734Z"
+}
