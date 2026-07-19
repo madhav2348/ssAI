@@ -39,6 +39,10 @@ export function SplashPage({
       <section className="splash-card">
         <p className="eyebrow">ss.ai workspace</p>
         <h1>Start with a clean screenshot workspace.</h1>
+        <p className="splash-subtitle">
+          Capture, organize, and search screenshots from Cloud, Telegram, and
+          Local Storage — all in one place.
+        </p>
         <div className="splash-actions">
           <button
             type="button"

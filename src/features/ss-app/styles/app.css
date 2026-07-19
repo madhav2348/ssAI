@@ -1,12 +1,57 @@
 .app-shell {
   min-height: 100vh;
+  background: #12101e;
 }
 
+
 .splash-shell {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 32px;
   position: relative;
+  min-height: 100vh;
+  background: #3d2e58;
+}
+
+.splash-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .splash-shell {
+  background:
+    radial-gradient(rgba(139, 92, 246, 0.18), transparent 40%),
+    radial-gradient(rgba(59, 130, 246, 0.12), transparent 35%), #020617;
+
+  border: 1px solid rgba(139, 92, 246, 0.15);
+
+  box-shadow:
+    0 0 30px rgba(139, 92, 246, 0.15),
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+}
+.splash-card > span,
+.splash-card .eyebrow,
+.splash-card span[class*="workspace"] {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #6366f1;
+}
+
+.splash-card h1,
+.splash-card .splash-title {
+  font-size: 2.85rem;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: var(--primary-text);
+  margin: 0;
 }
 
 .splash-card,
@@ -17,17 +62,43 @@
   border-radius: 24px;
   box-shadow: var(--shadow);
 }
-
 .splash-card {
+  position: relative;
+  max-width: 600px;
   width: min(560px, 100%);
   min-height: 430px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  gap: 20px;
   padding: 48px 32px;
+  border-radius: 28px;
+  background: #1e1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 20px 25px -5px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(99, 102, 241, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  animation: premiumFloatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.splash-card .button-group,
+.splash-card div:has(button) {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 12px;
 }
 
+/* 5. Buttons par premium hover effects */
+.splash-card button,
+.splash-card .btn {
+  padding: 12px 24px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
 .primary-button,
 .secondary-button,
 .sidebar-toggle,
@@ -45,9 +116,15 @@
   min-width: 180px;
   padding: 16px 24px;
   border-radius: 999px;
-  font-weight: 600;
-  color: var(--surface);
-  background: var(--primary);
+  font-weight: 700;
+  color: #ffffff;
+  background: #3b1f8c;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.primary-button:hover {
+  background: #4c2aad;
+  transform: translateY(-2px);
 }
 
 .primary-button:hover {
@@ -68,7 +145,7 @@
   border-radius: 999px;
   color: var(--text);
   background: transparent;
-  border: 1px solid var(--border);
+  border: none;
 }
 
 .secondary-button:hover {
@@ -110,17 +187,28 @@
 }
 
 .sidebar.closed {
-  width: 92px;
-  padding-inline: 14px;
+  width: 80px;
+  padding-inline: 0;
+  align-items: center;
 }
 
 .sidebar-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 16px;
   margin-bottom: 4px;
 }
 
+.sidebar.closed .nav-item {
+  justify-content: center;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  min-height: 48px;
+  border-radius: 16px;
+  margin: 0 auto;
+}
 .sidebar-toggle {
   width: 48px;
   height: 48px;
@@ -129,6 +217,12 @@
   border-radius: 16px;
   color: var(--surface);
   background: var(--sidebar-control-bg);
+}
+
+.sidebar.open .sidebar-header {
+  align-items: center;
+  flex-direction: row;
+  gap: 16px;
 }
 
 .sidebar-toggle:hover {
@@ -500,7 +594,20 @@
   font-size: 0.78rem;
   color: var(--primary);
 }
-
+.splash-card h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.2;
+  font-weight: 800;
+  color: #e8e0ff;
+}
+.splash-subtitle {
+  margin: 0;
+  max-width: 42ch;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
 .empty-state {
   max-width: 34ch;
   color: var(--muted);
@@ -603,13 +710,21 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse-ring {
-  0%   { box-shadow: 0 0 0 0 rgba(111, 66, 217, 0.45); }
-  70%  { box-shadow: 0 0 0 6px rgba(111, 66, 217, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(111, 66, 217, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(111, 66, 217, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(111, 66, 217, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(111, 66, 217, 0);
+  }
 }
 
 .job-spinner {
@@ -623,7 +738,9 @@
 
 .job-spinner--active {
   border-top-color: var(--primary);
-  animation: spin 0.9s linear infinite, pulse-ring 1.8s ease-out infinite;
+  animation:
+    spin 0.9s linear infinite,
+    pulse-ring 1.8s ease-out infinite;
 }
 
 .job-check {
@@ -663,7 +780,7 @@
 .job-id {
   font-size: 0.78rem;
   color: var(--muted);
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   white-space: nowrap;
 }
 
@@ -709,7 +826,9 @@
   background: transparent;
   font-size: 0.84rem;
   font-weight: 600;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .job-retry-btn:hover {
